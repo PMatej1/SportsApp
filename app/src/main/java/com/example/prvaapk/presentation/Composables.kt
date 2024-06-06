@@ -1,6 +1,7 @@
 package com.example.prvaapk.presentation
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -15,6 +17,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.prvaapk.domain.Match
 import com.example.prvaapk.domain.Team
+
 
 @Composable
 fun TeamList(teams: List<Team>, onTeamClick: (Team) -> Unit) {
@@ -60,12 +63,21 @@ fun MatchList(matches: List<Match>) {
 fun TeamListScreen(navController: NavController) {
     val viewModel: MainViewModel = viewModel()
     val teamsState = viewModel.teams.observeAsState(initial = emptyList())
-    val teams: List<Team> = teamsState.value
-    Scaffold(
-        topBar = { TopAppBar(title = { Text("Teams") }) }
-    ) {
-        TeamList(teams) { team ->
-            navController.navigate("matchList/${team.idTeam}")
+    val teams: List<Team>? = teamsState.value
+
+    if (teams.isNullOrEmpty()) {
+        Log.d("TeamListScreen", "No teams available, showing loading indicator")
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
+    } else {
+        Log.d("TeamListScreen", "Teams available: $teams")
+        Scaffold(
+            topBar = { TopAppBar(title = { Text("Teams") }) }
+        ) {
+            TeamList(teams) { team ->
+                navController.navigate("matchList/${team.idTeam}")
+            }
         }
     }
 }
@@ -76,11 +88,20 @@ fun TeamListScreen(navController: NavController) {
 fun MatchListScreen(teamId: String?) {
     val viewModel: MainViewModel = viewModel()
     val matchesState = viewModel.getMatches(teamId ?: "").observeAsState(initial = emptyList())
-    val matches: List<Match> = matchesState.value
-    Scaffold(
-        topBar = { TopAppBar(title = { Text("Matches") }) }
-    ) {
-        MatchList(matches)
+    val matches: List<Match>? = matchesState.value
+
+    if (matches.isNullOrEmpty()) {
+        Log.d("MatchListScreen", "No matches available, showing loading indicator")
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
+    } else {
+        Log.d("MatchListScreen", "Matches available: $matches")
+        Scaffold(
+            topBar = { TopAppBar(title = { Text("Matches") }) }
+        ) {
+            MatchList(matches)
+        }
     }
 }
 
