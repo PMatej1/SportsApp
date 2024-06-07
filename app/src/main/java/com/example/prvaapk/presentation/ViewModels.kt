@@ -24,4 +24,28 @@ class MainViewModel(private val repository: Repository = MainApplication.reposit
             Log.e("MainViewModel", "Failed to load matches", e)
         }
     }
+
+    fun getAllLeagues() = liveData {
+        try {
+            emit(repository.getAllLeagues())
+        } catch (e: Exception) {
+            Log.e("MainViewModel", "Failed to load leagues", e)
+        }
+    }
+
+    fun getAllSeasons(leagueId: String) = liveData {
+        try {
+            emit(repository.getAllSeasons(leagueId))
+        } catch (e: Exception) {
+            Log.e("MainViewModel", "Failed to load seasons", e)
+        }
+    }
+
+    fun getLeagueTable(leagueId: String, season: String) = liveData {
+        try {
+            emit(repository.getLeagueTable(leagueId, season))
+        } catch (e: Exception) {
+            Log.e("MainViewModel", "Failed to load league table", e)
+        }
+    }
 }

@@ -1,6 +1,9 @@
 package com.example.prvaapk.data
 
+import com.example.prvaapk.domain.LeagueResponse
 import com.example.prvaapk.domain.MatchResponse
+import com.example.prvaapk.domain.SeasonResponse
+import com.example.prvaapk.domain.TableResponse
 import com.example.prvaapk.domain.TeamResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,6 +46,15 @@ interface ApiService {
 
     @GET("api/v1/json/3/eventslast.php")
     suspend fun getMatches(@Query("id") idTeam: String = "133602"): MatchResponse
+
+    @GET("api/v1/json/3/all_leagues.php")
+    suspend fun getAllLeagues(): LeagueResponse
+
+    @GET("api/v1/json/3/search_all_seasons.php")
+    suspend fun getAllSeasons(@Query("id") leagueId: String): SeasonResponse
+
+    @GET("api/v1/json/3/lookuptable.php")
+    suspend fun getLeagueTable(@Query("l") leagueId: String, @Query("s") season: String): TableResponse
 }
 
 /**

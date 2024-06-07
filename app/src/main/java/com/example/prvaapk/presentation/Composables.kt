@@ -18,20 +18,22 @@ import androidx.navigation.NavController
 import com.example.prvaapk.domain.Match
 import com.example.prvaapk.domain.Team
 
+import com.example.prvaapk.domain.League
+import com.example.prvaapk.domain.Season
+import com.example.prvaapk.domain.TableEntry
 
 @Composable
-fun TeamList(teams: List<Team>, onTeamClick: (Team) -> Unit) {
+fun LeagueList(leagues: List<League>, onLeagueClick: (League) -> Unit) {
     LazyColumn(
         modifier = Modifier.fillMaxSize().padding(16.dp)
     ) {
-        items(teams) { team ->
+        items(leagues) { league ->
             Card(
-                modifier = Modifier.fillMaxWidth().padding(8.dp).clickable { onTeamClick(team) },
+                modifier = Modifier.fillMaxWidth().padding(8.dp).clickable { onLeagueClick(league) },
                 elevation = CardDefaults.cardElevation(4.dp)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text(text = team.strTeam, style = MaterialTheme.typography.headlineSmall)
-                    Text(text = team.strStadium, style = MaterialTheme.typography.bodyMedium)
+                    Text(text = league.strLeague, style = MaterialTheme.typography.headlineSmall)
                 }
             }
         }
@@ -39,11 +41,48 @@ fun TeamList(teams: List<Team>, onTeamClick: (Team) -> Unit) {
 }
 
 @Composable
-fun MatchList(matches: List<Match>) {
+fun SeasonList(seasons: List<Season>, onSeasonClick: (Season) -> Unit) {
     LazyColumn(
         modifier = Modifier.fillMaxSize().padding(16.dp)
     ) {
-        items(matches) { match ->
+        items(seasons) { season ->
+            Card(
+                modifier = Modifier.fillMaxWidth().padding(8.dp).clickable { onSeasonClick(season) },
+                elevation = CardDefaults.cardElevation(4.dp)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(text = season.strSeason, style = MaterialTheme.typography.headlineSmall)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun TableList(table: List<TableEntry>, onRowClick: (TableEntry) -> Unit) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize().padding(16.dp)
+    ) {
+        items(table) { entry ->
+            Card(
+                modifier = Modifier.fillMaxWidth().padding(8.dp).clickable { onRowClick(entry) },
+                elevation = CardDefaults.cardElevation(4.dp)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(text = entry.strTeam, style = MaterialTheme.typography.headlineSmall)
+                    Text(text = "Points: ${entry.intPoints}", style = MaterialTheme.typography.bodyMedium)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun MatchList(results: List<Match>) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize().padding(16.dp)
+    ) {
+        items(results) { match ->
             Card(
                 modifier = Modifier.fillMaxWidth().padding(8.dp),
                 elevation = CardDefaults.cardElevation(4.dp)
@@ -60,23 +99,73 @@ fun MatchList(matches: List<Match>) {
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun TeamListScreen(navController: NavController) {
+fun LeagueListScreen(navController: NavController) {
     val viewModel: MainViewModel = viewModel()
-    val teamsState = viewModel.teams.observeAsState(initial = emptyList())
-    val teams: List<Team>? = teamsState.value
+    val leaguesState = viewModel.getAllLeagues().observeAsState(initial = emptyList())
+    val leagues: List<League>? = leaguesState.value
 
-    if (teams.isNullOrEmpty()) {
-        Log.d("TeamListScreen", "No teams available, showing loading indicator")
+    if (leagues.isNullOrEmpty()) {
+        Log.d("LeagueListScreen", "No leagues available, showing loading indicator")
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
         }
     } else {
-        Log.d("TeamListScreen", "Teams available: $teams")
+        Log.d("LeagueListScreen", "Leagues available: $leagues")
         Scaffold(
-            topBar = { TopAppBar(title = { Text("Teams") }) }
+            topBar = { TopAppBar(title = { Text("Leagues") }) }
         ) {
-            TeamList(teams) { team ->
-                navController.navigate("matchList/${team.idTeam}")
+            LeagueList(leagues) { league ->
+                navController.navigate("seasonList/${league.idLeague}")
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@Composable
+fun SeasonListScreen(leagueId: String?, navController: NavController) {
+    val viewModel: MainViewModel = viewModel()
+    val seasonsState = viewModel.getAllSeasons(leagueId ?: "").observeAsState(initial = emptyList())
+    val seasons: List<Season>? = seasonsState.value
+
+    if (seasons.isNullOrEmpty()) {
+        Log.d("SeasonListScreen", "No seasons available, showing loading indicator")
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
+    } else {
+        Log.d("SeasonListScreen", "Seasons available: $seasons")
+        Scaffold(
+            topBar = { TopAppBar(title = { Text("Seasons") }) }
+        ) {
+            SeasonList(seasons) { season ->
+                navController.navigate("tableList/${leagueId}/${season.strSeason}")
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@Composable
+fun TableListScreen(leagueId: String?, season: String?, navController: NavController) {
+    val viewModel: MainViewModel = viewModel()
+    val tableState = viewModel.getLeagueTable(leagueId ?: "", season ?: "").observeAsState(initial = emptyList())
+    val table: List<TableEntry>? = tableState.value
+
+    if (table.isNullOrEmpty()) {
+        Log.d("TableListScreen", "No table available, showing loading indicator")
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
+    } else {
+        Log.d("TableListScreen", "Table available: $table")
+        Scaffold(
+            topBar = { TopAppBar(title = { Text("Table") }) }
+        ) {
+            TableList(table) { entry ->
+                navController.navigate("matchList/${entry.idTeam}")
             }
         }
     }
@@ -88,28 +177,45 @@ fun TeamListScreen(navController: NavController) {
 fun MatchListScreen(teamId: String?) {
     val viewModel: MainViewModel = viewModel()
     val matchesState = viewModel.getMatches(teamId ?: "").observeAsState(initial = emptyList())
-    val matches: List<Match>? = matchesState.value
+    val results: List<Match>? = matchesState.value
 
-    if (matches.isNullOrEmpty()) {
+    if (results.isNullOrEmpty()) {
         Log.d("MatchListScreen", "No matches available, showing loading indicator")
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
         }
     } else {
-        Log.d("MatchListScreen", "Matches available: $matches")
+        Log.d("MatchListScreen", "Matches available: $results")
         Scaffold(
             topBar = { TopAppBar(title = { Text("Matches") }) }
         ) {
-            MatchList(matches)
+            MatchList(results)
         }
     }
 }
 
+
 @Preview
 @Composable
-fun PreviewTeamList() {
-    TeamList(
-        listOf(Team("1", "Team 1", "Stadium 1"))
+fun PreviewLeagueList() {
+    LeagueList(
+        listOf(League("1", "League 1", "Soccer", "L1"))
+    ) {}
+}
+
+@Preview
+@Composable
+fun PreviewSeasonList() {
+    SeasonList(
+        listOf(Season("2020-2021"))
+    ) {}
+}
+
+@Preview
+@Composable
+fun PreviewTableList() {
+    TableList(
+        listOf(TableEntry("1", "1", "1", "Team 1", "https://example.com/badge.png", "1", "League 1", "2020-2021", "WLWLW", "Promotion - Champions League (Group Stage)", "38", "27", "6", "5", "83", "32", "51", "86", "2021-06-17 23:00:11"))
     ) {}
 }
 
