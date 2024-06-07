@@ -1,10 +1,12 @@
 package com.example.prvaapk
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,6 +15,13 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -32,12 +41,19 @@ class MainActivity : ComponentActivity() {
         setContent {
             PrvaApkTheme {
                 val navController = rememberNavController()
+                var title by remember {
+                    mutableStateOf("Leagues")
+                }
                 Scaffold(
+                    modifier = Modifier
+                        .background(color = Color.Green)
+                        .fillMaxSize(),
                     topBar = {
                         TopAppBar(
-                            title = { Text("Football Leagues") },
+                            colors = TopAppBarColors(containerColor = Color(19,90,21), Color(19,90,21),Color(19,90,21), Color.White, Color.White),
+                            title = { Text(title) },
                             actions = {
-                                IconButton(onClick = { /* TODO: Implement share functionality */ }) {
+                                IconButton(onClick = { shareApp("Check out this awesome Football Leagues app!")}) {
                                     Icon(Icons.Default.Share, contentDescription = null)
                                 }
                             }
@@ -45,19 +61,33 @@ class MainActivity : ComponentActivity() {
                     }
                 ) {
                     NavHost(navController, startDestination = "leagueList") {
-                        composable("leagueList") { LeagueListScreen(navController) }
+                        composable("leagueList") { LeagueListScreen(navController, ::shareApp) }
                         composable("seasonList/{leagueId}") { backStackEntry ->
-                            SeasonListScreen(backStackEntry.arguments?.getString("leagueId"), navController)
+                            title="Seasons"
+                            SeasonListScreen(backStackEntry.arguments?.getString("leagueId"), navController, ::shareApp)
                         }
                         composable("tableList/{leagueId}/{season}") { backStackEntry ->
-                            TableListScreen(backStackEntry.arguments?.getString("leagueId"), backStackEntry.arguments?.getString("season"), navController)
+                            title="Standings"
+                            TableListScreen(backStackEntry.arguments?.getString("leagueId"), backStackEntry.arguments?.getString("season"), navController, ::shareApp)
                         }
                         composable("matchList/{teamId}") { backStackEntry ->
-                            MatchListScreen(backStackEntry.arguments?.getString("teamId"))
+                            title="Last 5 games"
+                            MatchListScreen(backStackEntry.arguments?.getString("teamId"), ::shareApp)
                         }
                     }
                 }
             }
+
         }
     }
+    private fun shareApp(message: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, message)
+            type = "text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
+    }
 }
+

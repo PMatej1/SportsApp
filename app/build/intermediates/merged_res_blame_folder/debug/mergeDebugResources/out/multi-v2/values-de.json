@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.prvaapk.app-mergeDebugResources-52:/values-de/values-de.xml",
+            "outputFile": "com.example.prvaapk.app-mergeDebugResources-54:/values-de/values-de.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\57971b569f096334ae9be9106114919d\\transformed\\foundation-release\\res\\values-de\\values-de.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,142",
-                        "endColumns": "86,89",
-                        "endOffsets": "137,227"
-                    },
-                    "to": {
-                        "startLines": "83,84",
-                        "startColumns": "4,4",
-                        "startOffsets": "8659,8746",
-                        "endColumns": "86,89",
-                        "endOffsets": "8741,8831"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\2496218624f58148ea7e42a11ac5705c\\transformed\\ui-release\\res\\values-de\\values-de.xml",
+                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\8475a77367a48b331227fdf0ea94d31c\\transformed\\ui-release\\res\\values-de\\values-de.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -69,6 +52,23 @@
                         "startOffsets": "105,203,305,405,505,613,718,8293",
                         "endColumns": "97,101,99,99,107,104,117,100",
                         "endOffsets": "198,300,400,500,608,713,831,8389"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\2094a8189fb4999b88e400644ab600c4\\transformed\\foundation-release\\res\\values-de\\values-de.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,142",
+                        "endColumns": "86,89",
+                        "endOffsets": "137,227"
+                    },
+                    "to": {
+                        "startLines": "83,84",
+                        "startColumns": "4,4",
+                        "startOffsets": "8659,8746",
+                        "endColumns": "86,89",
+                        "endOffsets": "8741,8831"
                     }
                 }
             ]

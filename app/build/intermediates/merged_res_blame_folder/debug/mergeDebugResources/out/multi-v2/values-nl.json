@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.prvaapk.app-mergeDebugResources-52:/values-nl/values-nl.xml",
+            "outputFile": "com.example.prvaapk.app-mergeDebugResources-54:/values-nl/values-nl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\169845b678839e6bdddfc2b583cfde08\\transformed\\core-1.12.0\\res\\values-nl\\values-nl.xml",
@@ -18,6 +18,23 @@
                         "startOffsets": "105,207,309,409,509,616,720,8189",
                         "endColumns": "101,101,99,99,106,103,118,100",
                         "endOffsets": "202,304,404,504,611,715,834,8285"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\8475a77367a48b331227fdf0ea94d31c\\transformed\\ui-release\\res\\values-nl\\values-nl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,197,280,377,476,561,637,733,820,909,974,1039,1120,1203,1280,1364,1434",
+                        "endColumns": "91,82,96,98,84,75,95,86,88,64,64,80,82,76,83,69,119",
+                        "endOffsets": "192,275,372,471,556,632,728,815,904,969,1034,1115,1198,1275,1359,1429,1549"
+                    },
+                    "to": {
+                        "startLines": "9,10,11,12,13,14,15,72,73,74,75,76,77,78,80,81,82",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "839,931,1014,1111,1210,1295,1371,7642,7729,7818,7883,7948,8029,8112,8290,8374,8444",
+                        "endColumns": "91,82,96,98,84,75,95,86,88,64,64,80,82,76,83,69,119",
+                        "endOffsets": "926,1009,1106,1205,1290,1366,1462,7724,7813,7878,7943,8024,8107,8184,8369,8439,8559"
                     }
                 },
                 {
@@ -38,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\57971b569f096334ae9be9106114919d\\transformed\\foundation-release\\res\\values-nl\\values-nl.xml",
+                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\2094a8189fb4999b88e400644ab600c4\\transformed\\foundation-release\\res\\values-nl\\values-nl.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -52,23 +69,6 @@
                         "startOffsets": "8564,8650",
                         "endColumns": "85,85",
                         "endOffsets": "8645,8731"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\2496218624f58148ea7e42a11ac5705c\\transformed\\ui-release\\res\\values-nl\\values-nl.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,197,280,377,476,561,637,733,820,909,974,1039,1120,1203,1280,1364,1434",
-                        "endColumns": "91,82,96,98,84,75,95,86,88,64,64,80,82,76,83,69,119",
-                        "endOffsets": "192,275,372,471,556,632,728,815,904,969,1034,1115,1198,1275,1359,1429,1549"
-                    },
-                    "to": {
-                        "startLines": "9,10,11,12,13,14,15,72,73,74,75,76,77,78,80,81,82",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "839,931,1014,1111,1210,1295,1371,7642,7729,7818,7883,7948,8029,8112,8290,8374,8444",
-                        "endColumns": "91,82,96,98,84,75,95,86,88,64,64,80,82,76,83,69,119",
-                        "endOffsets": "926,1009,1106,1205,1290,1366,1462,7724,7813,7878,7943,8024,8107,8184,8369,8439,8559"
                     }
                 }
             ]

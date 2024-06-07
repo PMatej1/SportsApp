@@ -9,27 +9,11 @@ import com.example.prvaapk.domain.TableEntry
 import java.io.IOException
 
 class Repository(private val apiService: ApiService) {
-    suspend fun getTeams(league: String = "English Premier League"): List<Team> = try {
-        val response = apiService.getTeams(league)
-        val teams = response.teams
-        Log.d("Repository", "Fetched teams: $teams")
-        if (teams == null) {
-            Log.e("Repository", "Failed to parse teams: response teams are null")
-            emptyList()
-        } else {
-            teams
-        }
-    } catch (e: IOException) {
-        Log.e("Repository", "Failed to fetch teams", e)
-        emptyList()
-    }
 
     suspend fun getMatches(idTeam: String = "133602"): List<Match> = try {
         val response = apiService.getMatches(idTeam)
         val results = response.results
-        Log.d("Repository", "Fetched matches: $results")
         if (results == null) {
-            Log.e("Repository", "Failed to parse matches: response events are null")
             emptyList()
         } else {
             results
@@ -54,7 +38,6 @@ class Repository(private val apiService: ApiService) {
         Log.e("Repository", "Failed to fetch seasons", e)
         emptyList()
     }
-
 
 
     suspend fun getLeagueTable(leagueId: String, season: String): List<TableEntry> = try {

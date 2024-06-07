@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.prvaapk.app-mergeDebugResources-52:/values-fr/values-fr.xml",
+            "outputFile": "com.example.prvaapk.app-mergeDebugResources-54:/values-fr/values-fr.xml",
             "map": [
                 {
                     "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\169845b678839e6bdddfc2b583cfde08\\transformed\\core-1.12.0\\res\\values-fr\\values-fr.xml",
@@ -21,24 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\57971b569f096334ae9be9106114919d\\transformed\\foundation-release\\res\\values-fr\\values-fr.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,144",
-                        "endColumns": "88,94",
-                        "endOffsets": "139,234"
-                    },
-                    "to": {
-                        "startLines": "83,84",
-                        "startColumns": "4,4",
-                        "startOffsets": "8709,8798",
-                        "endColumns": "88,94",
-                        "endOffsets": "8793,8888"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\2496218624f58148ea7e42a11ac5705c\\transformed\\ui-release\\res\\values-fr\\values-fr.xml",
+                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\8475a77367a48b331227fdf0ea94d31c\\transformed\\ui-release\\res\\values-fr\\values-fr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -52,6 +35,23 @@
                         "startOffsets": "832,931,1019,1119,1219,1306,1385,7779,7871,7958,8029,8097,8178,8263,8440,8518,8587",
                         "endColumns": "98,87,99,99,86,78,91,91,86,70,67,80,84,75,77,68,121",
                         "endOffsets": "926,1014,1114,1214,1301,1380,1472,7866,7953,8024,8092,8173,8258,8334,8513,8582,8704"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\2094a8189fb4999b88e400644ab600c4\\transformed\\foundation-release\\res\\values-fr\\values-fr.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,144",
+                        "endColumns": "88,94",
+                        "endOffsets": "139,234"
+                    },
+                    "to": {
+                        "startLines": "83,84",
+                        "startColumns": "4,4",
+                        "startOffsets": "8709,8798",
+                        "endColumns": "88,94",
+                        "endOffsets": "8793,8888"
                     }
                 },
                 {

@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.prvaapk.app-mergeDebugResources-52:/values-te/values-te.xml",
+            "outputFile": "com.example.prvaapk.app-mergeDebugResources-54:/values-te/values-te.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\57971b569f096334ae9be9106114919d\\transformed\\foundation-release\\res\\values-te\\values-te.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,143",
-                        "endColumns": "87,94",
-                        "endOffsets": "138,233"
-                    },
-                    "to": {
-                        "startLines": "83,84",
-                        "startColumns": "4,4",
-                        "startOffsets": "8785,8873",
-                        "endColumns": "87,94",
-                        "endOffsets": "8868,8963"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\2496218624f58148ea7e42a11ac5705c\\transformed\\ui-release\\res\\values-te\\values-te.xml",
+                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\8475a77367a48b331227fdf0ea94d31c\\transformed\\ui-release\\res\\values-te\\values-te.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -52,6 +35,23 @@
                         "startOffsets": "1509,1638,1769,1883,2013,2117,2216,2332,2473,2585,2728,2812,2915,3011,3109,3225,3355,3463,3612,3759,3892,4088,4216,4332,4453,4590,4687,4784,4909,5037,5143,5249,5355,5498,5648,5756,5860,5936,6035,6136,6230,6322,6429,6509,6592,6693,6821,6915,7027,7115,7226,7328,7445,7568,7648,7755",
                         "endColumns": "128,130,113,129,103,98,115,140,111,142,83,102,95,97,115,129,107,148,146,132,195,127,115,120,136,96,96,124,127,105,105,105,142,149,107,103,75,98,100,93,91,106,79,82,100,127,93,111,87,110,101,116,122,79,106,96",
                         "endOffsets": "1633,1764,1878,2008,2112,2211,2327,2468,2580,2723,2807,2910,3006,3104,3220,3350,3458,3607,3754,3887,4083,4211,4327,4448,4585,4682,4779,4904,5032,5138,5244,5350,5493,5643,5751,5855,5931,6030,6131,6225,6317,6424,6504,6587,6688,6816,6910,7022,7110,7221,7323,7440,7563,7643,7750,7847"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\asmer\\.gradle\\caches\\transforms-4\\2094a8189fb4999b88e400644ab600c4\\transformed\\foundation-release\\res\\values-te\\values-te.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,143",
+                        "endColumns": "87,94",
+                        "endOffsets": "138,233"
+                    },
+                    "to": {
+                        "startLines": "83,84",
+                        "startColumns": "4,4",
+                        "startOffsets": "8785,8873",
+                        "endColumns": "87,94",
+                        "endOffsets": "8868,8963"
                     }
                 },
                 {

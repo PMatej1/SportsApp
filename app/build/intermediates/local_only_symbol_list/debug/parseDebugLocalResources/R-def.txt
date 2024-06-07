@@ -15,6 +15,7 @@ drawable dice_5
 drawable dice_6
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable vecteezy_simple_football_sport_icon_on_white_background_4693432
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
